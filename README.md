@@ -1,3 +1,12 @@
+# Sikt Claude Skills
+
+## Get started with `claude code`
+
+```
+claude '/plugin marketplace add https://gitlab.sikt.no/ki-team/initiatives/skills.git'
+```
+
+
 # Creating a Basic Skill
 
 Skills are simple to create - just a folder with a `SKILL.md` file containing YAML frontmatter and instructions. You can use the **template-skill** in this repository as a starting point:
