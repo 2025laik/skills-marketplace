@@ -6,18 +6,58 @@
   },
   "metadata": {
     "description": "collection of skills for Sikt developers",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
-      "name": "sikt-claude-skills",
-      "source": {
-        "source": "url",
-        "url": "git@gitlab.sikt.no:ki-team/initiatives/skills.git"
-      },
-      "description": "a collection of claude skills developed by sikt",
-      "keywords": ["sikt", "claude", "skills", "todo"],
-      "strict": true
+      "name": "aws-cli-access",
+      "source": "./skills/aws-cli-access",
+      "description": "Help accessing Sikt's AWS accounts via CLI, configuring AWS SSO sessions, and managing AWS CLI profiles"
+    },
+    {
+      "name": "aws-core-principles",
+      "source": "./skills/aws-core-principles",
+      "description": "Guidance on Sikt's core principles for running services on AWS, including security and infrastructure as code"
+    },
+    {
+      "name": "dns-configuration",
+      "source": "./skills/dns-configuration",
+      "description": "Help with DNS configuration for Platon applications and Sikt-owned domains"
+    },
+    {
+      "name": "email-sending",
+      "source": "./skills/email-sending",
+      "description": "Help sending email from applications in Platon infrastructure"
+    },
+    {
+      "name": "gitlab-ci-basics",
+      "source": "./skills/gitlab-ci-basics",
+      "description": "Help with GitLab CI/CD pipeline configuration for Platon PaaS"
+    },
+    {
+      "name": "kubectl-basics",
+      "source": "./skills/kubectl-basics",
+      "description": "Help with kubectl commands for Platon PaaS"
+    },
+    {
+      "name": "loki-logging",
+      "source": "./skills/loki-logging",
+      "description": "Help with Loki logging in Platon, including LogQL queries and Grafana access"
+    },
+    {
+      "name": "postgresql-aws",
+      "source": "./skills/postgresql-aws",
+      "description": "Help with PostgreSQL databases on AWS RDS in Platon"
+    },
+    {
+      "name": "vault-basics",
+      "source": "./skills/vault-basics",
+      "description": "Help with Vault for secret management in Platon"
+    },
+    {
+      "name": "vault-gitlab",
+      "source": "./skills/vault-gitlab",
+      "description": "Help integrating Vault secrets into GitLab CI/CD pipelines for Platon PaaS"
     }
   ]
 }
