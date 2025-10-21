@@ -16,12 +16,7 @@
         "url": "git@gitlab.sikt.no:ki-team/initiatives/skills.git"
       },
       "description": "a collection of claude skills developed by sikt",
-      "keywords": [
-        "sikt",
-        "claude",
-        "skills",
-        "more to come",
-      ],
+      "keywords": ["sikt", "claude", "skills", "todo"],
       "strict": true
     }
   ]
