@@ -1,5 +1,5 @@
 {
-  "name": "sikt skills marketplace",
+  "name": "sikt-skills-marketplace",
   "owner": {
     "name": "tollef jørgensen",
     "email": "tollef.jorgensen@sikt.no"
@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "sikt claude skills",
+      "name": "sikt-claude-skills",
       "source": {
         "source": "url",
         "url": "git@gitlab.sikt.no:ki-team/initiatives/skills.git"
