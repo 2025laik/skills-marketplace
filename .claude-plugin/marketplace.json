@@ -1,0 +1,28 @@
+{
+  "name": "sikt skills marketplace",
+  "owner": {
+    "name": "tollef jørgensen",
+    "email": "tollef.jorgensen@sikt.no"
+  },
+  "metadata": {
+    "description": "collection of skills for Sikt developers",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "sikt claude skills",
+      "source": {
+        "source": "url",
+        "url": "git@gitlab.sikt.no:ki-team/initiatives/skills.git"
+      },
+      "description": "a collection of claude skills developed by sikt",
+      "keywords": [
+        "sikt",
+        "claude",
+        "skills",
+        "more to come",
+      ],
+      "strict": true
+    }
+  ]
+}
