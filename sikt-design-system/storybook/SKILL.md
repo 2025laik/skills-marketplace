@@ -16,6 +16,36 @@ This skill provides direct links to Storybook documentation for all 43 Sikt comp
 - "Where are the props for Dialog documented?"
 - "Link me to the Card component docs"
 
+## Installation Reference
+
+After finding the component docs in Storybook, developers need to install packages. Always use the correct format:
+
+```bash
+# Core package (always required)
+npm install @sikt/sds-core
+
+# Add specific component packages
+npm install @sikt/sds-<component-name>
+```
+
+**Example installations by component type:**
+
+| Component | Install Command |
+|-----------|-----------------|
+| Button | `npm install @sikt/sds-core @sikt/sds-button` |
+| Text Input | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-input` |
+| Select | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-select` |
+| Card | `npm install @sikt/sds-core @sikt/sds-card` |
+| Dialog | `npm install @sikt/sds-core @sikt/sds-dialog` |
+| Table | `npm install @sikt/sds-core @sikt/sds-table` |
+| Header | `npm install @sikt/sds-core @sikt/sds-header` |
+
+After installation, import the CSS:
+```js
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-button/dist/index.css'; // and other components
+```
+
 ## When to Use This Skill
 
 **Use this skill when developers:**
@@ -24,6 +54,7 @@ This skill provides direct links to Storybook documentation for all 43 Sikt comp
 - Need to check component props and API
 - Want interactive Storybook demos
 - Ask "Where can I find..." or "Show me the docs for..."
+- Need Storybook URLs to understand component installation
 
 ## How It Works
 

@@ -7,7 +7,7 @@ description: Ready-to-use code examples for Sikt components. Use when developers
 
 ## Overview
 
-This skill provides copy-paste ready code examples for common UI patterns. When developers ask for implementation help, use these proven patterns.
+This skill provides copy-paste ready code examples for common UI patterns using Sikt Design System. When developers ask for implementation help, use these proven patterns with correct npm imports.
 
 **Common Developer Requests:**
 - "Show me how to build a form with validation"
@@ -18,6 +18,27 @@ This skill provides copy-paste ready code examples for common UI patterns. When 
 - "How do I create tabs?"
 - "I need a search and filter component"
 
+## Installation First
+
+Before implementing any patterns, install required packages:
+
+```bash
+# Core is always required
+npm install @sikt/sds-core
+
+# Add specific components you need
+npm install @sikt/sds-button @sikt/sds-input @sikt/sds-form
+```
+
+Then import components and stylesheets in your application:
+
+```js
+// Import component CSS
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
+import '@sikt/sds-input/dist/index.css';
+```
+
 ## When to Use This Skill
 
 **Use this skill when developers:**
@@ -26,6 +47,7 @@ This skill provides copy-paste ready code examples for common UI patterns. When 
 - Want to see validation patterns
 - Need accessibility best practices in code
 - Ask about specific patterns (forms, tables, modals, navigation)
+- Need correct npm package imports and CSS setup
 
 ## Component Implementation Patterns
 
@@ -34,7 +56,14 @@ This skill provides copy-paste ready code examples for common UI patterns. When 
 #### Basic Form with Validation
 
 ```jsx
-import { TextInput, TextArea, Checkbox, Button, ErrorSummary } from '@sikt/design-system';
+import { TextInput } from '@sikt/sds-input';
+import { Checkbox } from '@sikt/sds-checkbox';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-input/dist/index.css';
+import '@sikt/sds-checkbox/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
+import { useState } from 'react';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -85,51 +114,64 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} noValidate>
       {Object.keys(errors).length > 0 && (
-        <ErrorSummary
-          title="Please correct the following errors:"
-          errors={Object.entries(errors).map(([key, message]) => ({
-            field: key,
-            message
-          }))}
-        />
+        <div style={{ marginBottom: '24px', padding: '16px', backgroundColor: '#fde8e8', border: '2px solid #e84c3d', borderRadius: '4px' }}>
+          <h2 style={{ margin: '0 0 12px 0', fontSize: '16px', fontWeight: 'bold' }}>Please correct the following errors:</h2>
+          <ul style={{ margin: 0, paddingLeft: '24px' }}>
+            {Object.entries(errors).map(([key, message]) => (
+              <li key={key}>{message}</li>
+            ))}
+          </ul>
+        </div>
       )}
 
-      <TextInput
-        label="Name"
-        id="name"
-        value={formData.name}
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        error={errors.name}
-        required
-      />
+      <div style={{ marginBottom: '16px' }}>
+        <TextInput
+          label="Name"
+          id="name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          aria-invalid={!!errors.name}
+          required
+        />
+        {errors.name && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.name}</span>}
+      </div>
 
-      <TextInput
-        label="Email"
-        type="email"
-        id="email"
-        value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        error={errors.email}
-        required
-      />
+      <div style={{ marginBottom: '16px' }}>
+        <TextInput
+          label="Email"
+          type="email"
+          id="email"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          aria-invalid={!!errors.email}
+          required
+        />
+        {errors.email && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.email}</span>}
+      </div>
 
-      <TextArea
-        label="Message"
-        id="message"
-        value={formData.message}
-        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-        error={errors.message}
-        rows={5}
-        required
-      />
+      <div style={{ marginBottom: '16px' }}>
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          rows={5}
+          required
+          style={{ width: '100%', padding: '8px', border: '2px solid #ccc', borderRadius: '4px' }}
+        />
+        {errors.message && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.message}</span>}
+      </div>
 
-      <Checkbox
-        label="I accept the terms and conditions"
-        id="consent"
-        checked={formData.consent}
-        onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-        error={errors.consent}
-      />
+      <div style={{ marginBottom: '16px' }}>
+        <Checkbox
+          label="I accept the terms and conditions"
+          id="consent"
+          checked={formData.consent}
+          onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
+          aria-invalid={!!errors.consent}
+        />
+        {errors.consent && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.consent}</span>}
+      </div>
 
       <Button type="submit">Send Message</Button>
     </form>
@@ -140,7 +182,16 @@ function ContactForm() {
 #### Multi-Step Form
 
 ```jsx
-import { TextInput, Radio, Button, ProgressIndicator } from '@sikt/design-system';
+import { TextInput } from '@sikt/sds-input';
+import { Radio } from '@sikt/sds-radio';
+import { Button } from '@sikt/sds-button';
+import { ProgressIndicator } from '@sikt/sds-progress-indicator';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-input/dist/index.css';
+import '@sikt/sds-radio/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
+import '@sikt/sds-progress-indicator/dist/index.css';
+import { useState } from 'react';
 
 function MultiStepForm() {
   const [step, setStep] = useState(1);
@@ -162,7 +213,7 @@ function MultiStepForm() {
 
       {step === 1 && (
         <div>
-          <Heading level={2}>Personal Information</Heading>
+          <h2>Personal Information</h2>
           <TextInput
             label="Full Name"
             value={formData.personalInfo.name || ''}
@@ -177,7 +228,7 @@ function MultiStepForm() {
 
       {step === 2 && (
         <div>
-          <Heading level={2}>Preferences</Heading>
+          <h2>Preferences</h2>
           <Radio
             name="preference"
             options={[
@@ -197,8 +248,8 @@ function MultiStepForm() {
 
       {step === 3 && (
         <div>
-          <Heading level={2}>Confirmation</Heading>
-          <Paragraph>Review your information...</Paragraph>
+          <h2>Confirmation</h2>
+          <p>Review your information...</p>
           <Button variant="secondary" onClick={() => setStep(2)}>Back</Button>
           <Button type="submit">Submit</Button>
         </div>
@@ -213,7 +264,9 @@ function MultiStepForm() {
 #### Toast Notification System
 
 ```jsx
-import { Alert } from '@sikt/design-system';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
 import { useState, useEffect } from 'react';
 
 function ToastNotification({ message, variant, duration = 5000, onClose }) {
@@ -225,17 +278,29 @@ function ToastNotification({ message, variant, duration = 5000, onClose }) {
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
+  const variantStyles = {
+    success: { backgroundColor: '#d4edda', borderColor: '#28a745', color: '#155724' },
+    error: { backgroundColor: '#f8d7da', borderColor: '#dc3545', color: '#721c24' },
+    warning: { backgroundColor: '#fff3cd', borderColor: '#ffc107', color: '#856404' },
+    info: { backgroundColor: '#d1ecf1', borderColor: '#17a2b8', color: '#0c5460' }
+  };
+
   return (
     <div style={{
       position: 'fixed',
       top: '20px',
       right: '20px',
       zIndex: 1000,
-      maxWidth: '400px'
+      maxWidth: '400px',
+      padding: '16px',
+      border: '2px solid',
+      borderRadius: '4px',
+      ...variantStyles[variant]
     }}>
-      <Alert variant={variant} onClose={onClose}>
-        {message}
-      </Alert>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+        <p style={{ margin: 0 }}>{message}</p>
+        <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px' }}>×</button>
+      </div>
     </div>
   );
 }
@@ -278,7 +343,10 @@ function App() {
 #### Application Status Pattern
 
 ```jsx
-import { ApplicationStatus, Button } from '@sikt/design-system';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
+import { useState, useEffect } from 'react';
 
 function DataLoadingState() {
   const [status, setStatus] = useState('loading');
@@ -304,22 +372,20 @@ function DataLoadingState() {
 
   if (status === 'loading') {
     return (
-      <ApplicationStatus
-        variant="loading"
-        title="Loading data..."
-        message="Please wait while we fetch your information."
-      />
+      <div style={{ padding: '24px', textAlign: 'center' }}>
+        <p>Loading data...</p>
+        <p>Please wait while we fetch your information.</p>
+      </div>
     );
   }
 
   if (status === 'error') {
     return (
-      <ApplicationStatus
-        variant="error"
-        title="Failed to load data"
-        message={error}
-        action={<Button onClick={loadData}>Try Again</Button>}
-      />
+      <div style={{ padding: '24px', textAlign: 'center', color: '#dc3545' }}>
+        <h2>Failed to load data</h2>
+        <p>{error}</p>
+        <Button onClick={loadData}>Try Again</Button>
+      </div>
     );
   }
 
@@ -332,21 +398,26 @@ function DataLoadingState() {
 #### Confirmation Dialog
 
 ```jsx
-import { Dialog, Button, Paragraph } from '@sikt/design-system';
+import { Dialog } from '@sikt/sds-dialog';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-dialog/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
 
 function DeleteConfirmationDialog({ isOpen, onClose, onConfirm, itemName }) {
+  if (!isOpen) return null;
+
   return (
     <Dialog
       open={isOpen}
       onClose={onClose}
       title="Confirm Deletion"
-      aria-describedby="dialog-description"
     >
-      <Paragraph id="dialog-description">
+      <p id="dialog-description">
         Are you sure you want to delete "{itemName}"? This action cannot be undone.
-      </Paragraph>
+      </p>
 
-      <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '24px', justifyContent: 'flex-end' }}>
         <Button variant="secondary" onClick={onClose}>
           Cancel
         </Button>
@@ -396,7 +467,14 @@ function ItemList() {
 #### Form Dialog
 
 ```jsx
-import { Dialog, TextInput, Button } from '@sikt/design-system';
+import { Dialog } from '@sikt/sds-dialog';
+import { TextInput } from '@sikt/sds-input';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-dialog/dist/index.css';
+import '@sikt/sds-input/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
+import { useState } from 'react';
 
 function AddItemDialog({ isOpen, onClose, onAdd }) {
   const [name, setName] = useState('');
@@ -449,7 +527,11 @@ function AddItemDialog({ isOpen, onClose, onAdd }) {
 #### Sortable Data Table
 
 ```jsx
-import { Table, Button } from '@sikt/design-system';
+import { Table } from '@sikt/sds-table';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-table/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
 import { useState } from 'react';
 
 function SortableTable({ data }) {
@@ -525,7 +607,11 @@ function SortableTable({ data }) {
 #### Paginated Table
 
 ```jsx
-import { Table, Pagination } from '@sikt/design-system';
+import { Table } from '@sikt/sds-table';
+import { Pagination } from '@sikt/sds-pagination';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-table/dist/index.css';
+import '@sikt/sds-pagination/dist/index.css';
 import { useState } from 'react';
 
 function PaginatedTable({ data, itemsPerPage = 10 }) {
@@ -572,29 +658,25 @@ function PaginatedTable({ data, itemsPerPage = 10 }) {
 #### Page Layout with Header and Footer
 
 ```jsx
-import { Header, Footer, Section, Container } from '@sikt/design-system';
+import { Header } from '@sikt/sds-header';
+import { Footer } from '@sikt/sds-footer';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-header/dist/index.css';
+import '@sikt/sds-footer/dist/index.css';
 
 function PageLayout({ children }) {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header
-        logo={<Logo />}
         navigation={[
           { label: 'Home', href: '/' },
           { label: 'About', href: '/about' },
           { label: 'Contact', href: '/contact' }
         ]}
-        userMenu={[
-          { label: 'Profile', href: '/profile' },
-          { label: 'Settings', href: '/settings' },
-          { label: 'Logout', href: '/logout' }
-        ]}
       />
 
-      <main style={{ flex: 1 }}>
-        <Container>
-          {children}
-        </Container>
+      <main style={{ flex: 1, maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 16px' }}>
+        {children}
       </main>
 
       <Footer
@@ -613,14 +695,18 @@ function PageLayout({ children }) {
 #### Card Grid Layout
 
 ```jsx
-import { Card, Heading, Paragraph, Button } from '@sikt/design-system';
+import { Card } from '@sikt/sds-card';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-card/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
 
 function CardGrid({ items }) {
   return (
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-      gap: 'var(--sds-space-gap-24)'
+      gap: '24px'
     }}>
       {items.map((item, index) => (
         <Card key={index}>
@@ -628,12 +714,14 @@ function CardGrid({ items }) {
             <img
               src={item.image}
               alt={item.title}
-              style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '4px 4px 0 0' }}
             />
           )}
-          <Heading level={3}>{item.title}</Heading>
-          <Paragraph>{item.description}</Paragraph>
-          <Button href={item.link}>Learn More</Button>
+          <div style={{ padding: '16px' }}>
+            <h3 style={{ margin: '0 0 8px 0' }}>{item.title}</h3>
+            <p style={{ margin: '0 0 16px 0', color: '#666' }}>{item.description}</p>
+            <a href={item.link}><Button>Learn More</Button></a>
+          </div>
         </Card>
       ))}
     </div>
@@ -646,7 +734,9 @@ function CardGrid({ items }) {
 #### Tabs with Content
 
 ```jsx
-import { Tabs, Section } from '@sikt/design-system';
+import { Tabs } from '@sikt/sds-tabs';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-tabs/dist/index.css';
 import { useState } from 'react';
 
 function TabbedContent() {
@@ -666,28 +756,28 @@ function TabbedContent() {
         onChange={setActiveTab}
       />
 
-      <Section>
+      <section style={{ padding: '24px 0' }}>
         {activeTab === 'overview' && (
           <div>
-            <Heading level={2}>Overview</Heading>
-            <Paragraph>Overview content...</Paragraph>
+            <h2>Overview</h2>
+            <p>Overview content...</p>
           </div>
         )}
 
         {activeTab === 'details' && (
           <div>
-            <Heading level={2}>Details</Heading>
-            <Paragraph>Detailed information...</Paragraph>
+            <h2>Details</h2>
+            <p>Detailed information...</p>
           </div>
         )}
 
         {activeTab === 'settings' && (
           <div>
-            <Heading level={2}>Settings</Heading>
-            <Paragraph>Settings options...</Paragraph>
+            <h2>Settings</h2>
+            <p>Settings options...</p>
           </div>
         )}
-      </Section>
+      </section>
     </div>
   );
 }
@@ -696,7 +786,9 @@ function TabbedContent() {
 #### Breadcrumb Navigation
 
 ```jsx
-import { Breadcrumbs } from '@sikt/design-system';
+import { Breadcrumbs } from '@sikt/sds-breadcrumbs';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-breadcrumbs/dist/index.css';
 
 function ProductPage({ category, subcategory, product }) {
   const breadcrumbItems = [
@@ -718,7 +810,13 @@ function ProductPage({ category, subcategory, product }) {
 ### 7. Search and Filter Patterns
 
 ```jsx
-import { TextInput, Select, FilterList, Button } from '@sikt/design-system';
+import { TextInput } from '@sikt/sds-input';
+import { Select } from '@sikt/sds-select';
+import { Button } from '@sikt/sds-button';
+import '@sikt/sds-core/dist/index.css';
+import '@sikt/sds-input/dist/index.css';
+import '@sikt/sds-select/dist/index.css';
+import '@sikt/sds-button/dist/index.css';
 import { useState } from 'react';
 
 function SearchAndFilter({ data }) {
@@ -777,7 +875,19 @@ function SearchAndFilter({ data }) {
         </Button>
       </div>
 
-      <FilterList items={filteredData} />
+      <div style={{ marginTop: '24px' }}>
+        {filteredData.length > 0 ? (
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {filteredData.map((item, idx) => (
+              <li key={idx} style={{ padding: '12px', borderBottom: '1px solid #eee' }}>
+                <strong>{item.name}</strong> - {item.status}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No items found matching your search.</p>
+        )}
+      </div>
     </div>
   );
 }

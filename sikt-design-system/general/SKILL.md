@@ -20,11 +20,38 @@ This skill helps developers build web applications and components using the Sikt
 
 ## Quick Start for Developers
 
+### Installation
+
+All Sikt Design System components require the base package. Install dependencies with npm:
+
+```bash
+npm install @sikt/sds-core @sikt/sds-<component-name>
+```
+
+**Two packages are always required:**
+
+1. **`@sikt/sds-core`** - Base styles, fonts, design tokens (required for all projects)
+2. **`@sikt/sds-<component-name>`** - The specific component (e.g., `@sikt/sds-button`, `@sikt/sds-input`)
+
+**Examples:**
+
+```bash
+# For Button component
+npm install @sikt/sds-core @sikt/sds-button
+
+# For Form components
+npm install @sikt/sds-core @sikt/sds-form @sikt/sds-input @sikt/sds-checkbox
+
+# For multiple components
+npm install @sikt/sds-core @sikt/sds-button @sikt/sds-card @sikt/sds-header
+```
+
 ### Just Starting?
-1. **Choose components** from 43 available options (buttons, forms, cards, etc.)
-2. **Apply design tokens** for colors, spacing, and typography
-3. **Follow responsive breakpoints**: Mobile (<720px), Tablet (720px), Desktop (1024px)
-4. **Test accessibility** using the built-in guidelines
+1. **Install core** package and desired components via npm
+2. **Choose components** from 43 available options (buttons, forms, cards, etc.)
+3. **Apply design tokens** for colors, spacing, and typography
+4. **Follow responsive breakpoints**: Mobile (<720px), Tablet (720px), Desktop (1024px)
+5. **Test accessibility** using the built-in guidelines
 
 ### Need Something Specific?
 - **Building a form?** → See Form & Input Components section
@@ -32,6 +59,7 @@ This skill helps developers build web applications and components using the Sikt
 - **Showing feedback?** → See Message & Feedback Components section
 - **Need component docs?** → Use the `sikt-design-system/storybook` skill for URLs
 - **Need code examples?** → Use the `sikt-design-system/components` skill
+- **Need installation help?** → See the Installation section above
 
 ## When to Use This Skill
 
@@ -95,6 +123,35 @@ Token naming convention:
 | Tablet | 720px | Tablet layouts |
 | Desktop | 1024px | Full desktop experience |
 | Ultrawide | 1440px | Large screen enhancements |
+
+### 3b. NPM Package Reference
+
+**Finding the correct package name:**
+
+All components follow the pattern `@sikt/sds-<component-type>`. Use the table below to find exact package names:
+
+| Use Case | NPM Package | Install Command |
+|----------|-------------|-----------------|
+| Buttons | `@sikt/sds-button` | `npm install @sikt/sds-core @sikt/sds-button` |
+| Text inputs | `@sikt/sds-input` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-input` |
+| Email inputs | `@sikt/sds-input` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-input` |
+| Select dropdowns | `@sikt/sds-select` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-select` |
+| Checkboxes | `@sikt/sds-checkbox` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-checkbox` |
+| Radio buttons | `@sikt/sds-radio` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-radio` |
+| Toggles | `@sikt/sds-toggle` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-toggle` |
+| Date pickers | `@sikt/sds-input-datepicker` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-input-datepicker` |
+| File uploads | `@sikt/sds-input-file` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-input-file` |
+| Comboboxes | `@sikt/sds-combobox` | `npm install @sikt/sds-core @sikt/sds-form @sikt/sds-combobox` |
+| Cards | `@sikt/sds-card` | `npm install @sikt/sds-core @sikt/sds-card` |
+| Headers | `@sikt/sds-header` | `npm install @sikt/sds-core @sikt/sds-header` |
+| Footers | `@sikt/sds-footer` | `npm install @sikt/sds-core @sikt/sds-footer` |
+| Tables | `@sikt/sds-table` | `npm install @sikt/sds-core @sikt/sds-table` |
+| Dialogs | `@sikt/sds-dialog` | `npm install @sikt/sds-core @sikt/sds-dialog` |
+| Alerts | Message component | See Storybook for exact package |
+| Icons | `@sikt/sds-icons` | `npm install @sikt/sds-icons` |
+| Design tokens | `@sikt/sds-tokens` | `npm install @sikt/sds-tokens` |
+
+For complete list of 43+ components, use the `sikt-design-storybook` skill to find Storybook documentation URLs.
 
 ### 4. Component Selection Guide (43 Components)
 
