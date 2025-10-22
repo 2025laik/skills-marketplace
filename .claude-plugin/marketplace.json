@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "collection of skills for Sikt developers",
-    "version": "0.3.0"
+    "version": "0.4.0"
   },
   "plugins": [
     {
@@ -41,6 +41,17 @@
         "./platon-skills/gitlab/ci",
         "./platon-skills/vault/basics",
         "./platon-skills/vault/gitlab"
+      ]
+    },
+    {
+      "name": "sikt-design-system",
+      "description": "Sikt Design System skills including visual identity, design tokens, components, Storybook generation.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./sikt-design-system/general",
+        "./sikt-design-system/components",
+        "./sikt-design-system/storybook"
       ]
     }
   ]
