@@ -137,13 +137,41 @@ Designed to work well together for content differentiation without semantic mean
 
 ## Base Color Palette
 
-The base tokens reference these color groups:
-- **Purple** (primary brand color)
-- **Blue**
-- **Green**
-- **Yellow**
-- **Red**
-- **Neutral** (grays, blacks, whites)
+The base tokens reference the official Sikt color palette:
+
+### Primary Palette (Lilla)
+- **Sikt lilla 01**: `#6F5D7A` - Main brand purple
+- **Sikt lilla 02**: `#B4B0FB` - Medium purple
+- **Sikt lilla 03**: `#F3F1FE` - Light purple
+- **Sikt Mørk**: `#0F0035` - Dark (nearly black)
+- **Sikt Lys**: `#FFFFFF` - Light (white)
+
+### Secondary Palette (Sekundærpalett)
+
+**Rosa (Pink):**
+- **Sikt rosa 01**: `#FF78BF`
+- **Sikt rosa 02**: `#FFBD54`
+- **Sikt rosa 03**: `#FFE0F7`
+
+**Blå (Blue):**
+- **Sikt blå 01**: `#3068FF`
+- **Sikt blå 02**: `#76A8FF`
+- **Sikt blå 03**: `#E1E0FF`
+
+**Grønn (Green):**
+- **Sikt grønn 01**: `#13B833`
+- **Sikt grønn 02**: `#A3E8BF`
+- **Sikt grønn 03**: `#E3F3E8`
+
+**Oransje (Orange):**
+- **Sikt oransje 01**: `#FF956E`
+- **Sikt oransje 02**: `#FFB6A1`
+- **Sikt oransje 03**: `#FFE8E8`
+
+**Gul (Yellow):**
+- **Sikt gul 01**: `#FFC630`
+- **Sikt gul 02**: `#FFE398`
+- **Sikt gul 03**: `#FFF4D7`
 
 ## Usage Guidelines
 
@@ -163,6 +191,8 @@ Category colors are **better suited for**:
 - List/table row differentiation
 - Non-semantic color coding
 - Charts and graphs
+
+**Important**: Category colors should map to the secondary palette colors (rosa, blå, grønn, oransje, gul) to maintain consistency with the Sikt brand identity. The primary purple palette remains reserved for brand identity and primary interactions.
 
 ### Interactive Colors
 - **Primary**: Main actions, primary buttons, key interactive elements
