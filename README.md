@@ -11,8 +11,10 @@ legg til spesifikke skills:
 
 ```
 claude
-/plugin install vault-gitlab@sikt-skills-marketplace
+/plugin install platon-aws-skills@sikt-skills-marketplace
 ```
+
+en oversikt over alle plugins finnes i [marketplace](.claude-plugin/marketplace.json).
 
 # nye skills
 
