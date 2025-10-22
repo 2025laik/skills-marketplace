@@ -1,32 +1,31 @@
 # Sikt Claude Skills
 
-## Get started with `claude code`
+##  i `claude code`
 
 ```
 claude
 /plugin marketplace add https://gitlab.sikt.no/ki-team/initiatives/skills.git
 ```
 
-add specific skills
+legg til spesifikke skills:
 
 ```
 claude
 /plugin install vault-gitlab@sikt-skills-marketplace
 ```
 
-Run `./new-plugin.sh` to create a new skill from the template.
+# nye skills
 
-# creating a skill
-
-Skills are simple to create - just a folder with a `SKILL.md` file containing YAML frontmatter and instructions. You can use the **template-skill** in this repository as a starting point:
+trenger kun en mappe med en `SKILL.md`-fil med metadata-frontmatter og diverse instrukser.
+se [template-skill](template-skill/SKILL.md), evt:
 
 ```markdown
 ---
-name: my-skill-name
-description: A clear description of what this skill does and when to use it
+name: my-skill
+description: a clear description of what this skill does and when to use it
 ---
 
 # skill name
 
-Your stuff here.
+your stuff here.
 ```
