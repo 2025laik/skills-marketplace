@@ -6,58 +6,42 @@
   },
   "metadata": {
     "description": "collection of skills for Sikt developers",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
-      "name": "aws-cli-access",
-      "source": "./platon-skills/aws/cli-access",
-      "description": "Help accessing Sikt's AWS accounts via CLI, configuring AWS SSO sessions, and managing AWS CLI profiles"
+      "name": "platon-aws-skills",
+      "description": "Collection of AWS-related skills including CLI access, core principles, and PostgreSQL configuration",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./platon-skills/aws/cli-access",
+        "./platon-skills/aws/core-principles",
+        "./platon-skills/aws/postgresql"
+      ]
     },
     {
-      "name": "aws-core-principles",
-      "source": "./platon-skills/aws/core-principles",
-      "description": "Guidance on Sikt's core principles for running services on AWS, including security and infrastructure as code"
+      "name": "platon-infrastructure-skills",
+      "description": "Collection of infrastructure and operations skills including DNS, email, kubectl, and logging",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./platon-skills/dns/config",
+        "./platon-skills/email-sending",
+        "./platon-skills/kubectl/basics",
+        "./platon-skills/logging/loki"
+      ]
     },
     {
-      "name": "dns-configuration",
-      "source": "./platon-skills/dns/config",
-      "description": "Help with DNS configuration for Platon applications and Sikt-owned domains"
-    },
-    {
-      "name": "email-sending",
-      "source": "./platon-skills/email-sending",
-      "description": "Help sending email from applications in Platon infrastructure"
-    },
-    {
-      "name": "gitlab-ci-basics",
-      "source": "./platon-skills/gitlab/ci",
-      "description": "Help with GitLab CI/CD pipeline configuration for Platon PaaS"
-    },
-    {
-      "name": "kubectl-basics",
-      "source": "./platon-skills/kubectl/basics",
-      "description": "Help with kubectl commands for Platon PaaS"
-    },
-    {
-      "name": "loki-logging",
-      "source": "./platon-skills/logging/loki",
-      "description": "Help with Loki logging in Platon, including LogQL queries and Grafana access"
-    },
-    {
-      "name": "postgresql-aws",
-      "source": "./platon-skills/aws/postgresql",
-      "description": "Help with PostgreSQL databases on AWS RDS in Platon"
-    },
-    {
-      "name": "vault-basics",
-      "source": "./platon-skills/vault/basics",
-      "description": "Help with Vault for secret management in Platon"
-    },
-    {
-      "name": "vault-gitlab",
-      "source": "./platon-skills/vault/gitlab",
-      "description": "Help integrating Vault secrets into GitLab CI/CD pipelines for Platon PaaS"
+      "name": "platon-cicd-skills",
+      "description": "Collection of CI/CD and DevOps skills including GitLab pipelines and Vault integration",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./platon-skills/gitlab/ci",
+        "./platon-skills/vault/basics",
+        "./platon-skills/vault/gitlab"
+      ]
     }
   ]
 }
