@@ -15,14 +15,11 @@ This skill provides implementation examples for Sikt Design System accordion and
 npm install @sikt/sds-accordion @sikt/sds-details @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Accordion } from '@sikt/sds-accordion';
 import { Details } from '@sikt/sds-details';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-accordion/dist/index.css';
-import '@sikt/sds-details/dist/index.css';
 ```
 
 ## Basic Accordion

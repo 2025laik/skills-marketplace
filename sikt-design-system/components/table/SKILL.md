@@ -15,16 +15,12 @@ This skill provides implementation examples for Sikt Design System table compone
 npm install @sikt/sds-table @sikt/sds-pagination @sikt/sds-button @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Table } from '@sikt/sds-table';
 import { Pagination } from '@sikt/sds-pagination';
 import { Button } from '@sikt/sds-button';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-table/dist/index.css';
-import '@sikt/sds-pagination/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
 ```
 
 ## Basic Table

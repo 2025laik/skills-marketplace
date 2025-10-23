@@ -15,18 +15,13 @@ This skill provides implementation examples for Sikt Design System advanced inpu
 npm install @sikt/sds-combobox @sikt/sds-input-datepicker @sikt/sds-input-file @sikt/sds-toggle @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Combobox } from '@sikt/sds-combobox';
 import { InputDatepicker } from '@sikt/sds-input-datepicker';
 import { InputFile } from '@sikt/sds-input-file';
 import { Toggle } from '@sikt/sds-toggle';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-combobox/dist/index.css';
-import '@sikt/sds-input-datepicker/dist/index.css';
-import '@sikt/sds-input-file/dist/index.css';
-import '@sikt/sds-toggle/dist/index.css';
 ```
 
 ## Combobox Component

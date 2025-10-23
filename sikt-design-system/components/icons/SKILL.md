@@ -19,9 +19,9 @@ Import icons and stylesheets:
 
 ```js
 import { Icon } from '@sikt/sds-icons';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-icons/dist/index.css';
 ```
+
+**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
 
 ## Basic Icon Usage
 

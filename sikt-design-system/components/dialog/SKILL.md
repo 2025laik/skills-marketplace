@@ -15,16 +15,12 @@ This skill provides implementation examples for Sikt Design System dialog and mo
 npm install @sikt/sds-dialog @sikt/sds-button @sikt/sds-input @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Dialog } from '@sikt/sds-dialog';
 import { Button } from '@sikt/sds-button';
 import { TextInput } from '@sikt/sds-input';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-dialog/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
-import '@sikt/sds-input/dist/index.css';
 ```
 
 ## Basic Dialog

@@ -15,14 +15,11 @@ This skill provides implementation examples for Sikt Design System navigation co
 npm install @sikt/sds-tabs @sikt/sds-breadcrumbs @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Tabs } from '@sikt/sds-tabs';
 import { Breadcrumbs } from '@sikt/sds-breadcrumbs';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-tabs/dist/index.css';
-import '@sikt/sds-breadcrumbs/dist/index.css';
 ```
 
 ## Tabs Component

@@ -15,13 +15,13 @@ This skill provides implementation examples for Sikt Design System list componen
 npm install @sikt/sds-list @sikt/sds-filter-list @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { List, FilterList } from '@sikt/sds-list';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-list/dist/index.css';
 ```
+
+**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
 
 ## Basic List
 

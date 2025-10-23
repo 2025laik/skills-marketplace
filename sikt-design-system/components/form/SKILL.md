@@ -7,31 +7,25 @@ description: Ready-to-use code examples for Sikt form components. Use when devel
 
 ## Overview
 
-This skill provides implementation examples for Sikt Design System form components including TextInput, Checkbox, Radio, Select, and complete form patterns with validation.
+This skill provides implementation examples for Sikt Design System form components including TextInput, CheckboxInput, Select, and complete form patterns with validation.
 
 ## Installation
 
 ```bash
-npm install @sikt/sds-input @sikt/sds-checkbox @sikt/sds-radio @sikt/sds-select @sikt/sds-button @sikt/sds-section @sikt/sds-core
+npm install @sikt/sds-input @sikt/sds-checkbox @sikt/sds-select @sikt/sds-button @sikt/sds-section @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { TextInput } from '@sikt/sds-input';
-import { Checkbox } from '@sikt/sds-checkbox';
-import { Radio } from '@sikt/sds-radio';
+import { CheckboxInput } from '@sikt/sds-checkbox';
 import { Select } from '@sikt/sds-select';
 import { Button } from '@sikt/sds-button';
 import { Section } from '@sikt/sds-section';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-input/dist/index.css';
-import '@sikt/sds-checkbox/dist/index.css';
-import '@sikt/sds-radio/dist/index.css';
-import '@sikt/sds-select/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
-import '@sikt/sds-section/dist/index.css';
 ```
+
+**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
 
 ## Basic Text Input
 
@@ -100,43 +94,67 @@ function BasicInput() {
 ## Checkbox Component
 
 ```jsx
-import { Checkbox } from '@sikt/sds-checkbox';
+import { CheckboxInput } from '@sikt/sds-checkbox';
 
 function CheckboxExample() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <Checkbox
+    <CheckboxInput
       label="I accept the terms and conditions"
       id="terms"
-      checked={checked}
+      isChecked={checked}
       onChange={(e) => setChecked(e.target.checked)}
     />
   );
 }
 ```
 
-## Radio Component
+## Radio Buttons
+
+Note: There is no dedicated Radio component in the design system. Use native HTML radio inputs:
 
 ```jsx
-import { Radio } from '@sikt/sds-radio';
-
 function RadioExample() {
   const [selected, setSelected] = useState('');
 
   return (
-    <div>
-      <Radio
-        name="preference"
-        options={[
-          { value: 'option1', label: 'Option 1' },
-          { value: 'option2', label: 'Option 2' },
-          { value: 'option3', label: 'Option 3' }
-        ]}
-        value={selected}
-        onChange={(e) => setSelected(e.target.value)}
-      />
-    </div>
+    <fieldset>
+      <legend>Select an option</legend>
+      <div>
+        <input
+          type="radio"
+          id="option1"
+          name="preference"
+          value="option1"
+          checked={selected === 'option1'}
+          onChange={(e) => setSelected(e.target.value)}
+        />
+        <label htmlFor="option1">Option 1</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="option2"
+          name="preference"
+          value="option2"
+          checked={selected === 'option2'}
+          onChange={(e) => setSelected(e.target.value)}
+        />
+        <label htmlFor="option2">Option 2</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="option3"
+          name="preference"
+          value="option3"
+          checked={selected === 'option3'}
+          onChange={(e) => setSelected(e.target.value)}
+        />
+        <label htmlFor="option3">Option 3</label>
+      </div>
+    </fieldset>
   );
 }
 ```
@@ -169,7 +187,7 @@ function SelectExample() {
 
 ```jsx
 import { TextInput } from '@sikt/sds-input';
-import { Checkbox } from '@sikt/sds-checkbox';
+import { CheckboxInput } from '@sikt/sds-checkbox';
 import { Button } from '@sikt/sds-button';
 import { useState } from 'react';
 
@@ -271,10 +289,10 @@ function ContactForm() {
       </div>
 
       <div style={{ marginBottom: '16px' }}>
-        <Checkbox
+        <CheckboxInput
           label="I accept the terms and conditions"
           id="consent"
-          checked={formData.consent}
+          isChecked={formData.consent}
           onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
           aria-invalid={!!errors.consent}
         />
@@ -291,7 +309,6 @@ function ContactForm() {
 
 ```jsx
 import { TextInput } from '@sikt/sds-input';
-import { Radio } from '@sikt/sds-radio';
 import { Button } from '@sikt/sds-button';
 import { ProgressIndicator } from '@sikt/sds-progress-indicator';
 import { useState } from 'react';
@@ -332,18 +349,37 @@ function MultiStepForm() {
       {step === 2 && (
         <div>
           <h2>Preferences</h2>
-          <Radio
-            name="preference"
-            options={[
-              { value: 'option1', label: 'Option 1' },
-              { value: 'option2', label: 'Option 2' }
-            ]}
-            value={formData.preferences.choice}
-            onChange={(e) => setFormData({
-              ...formData,
-              preferences: { ...formData.preferences, choice: e.target.value }
-            })}
-          />
+          <fieldset>
+            <legend>Select your preference</legend>
+            <div>
+              <input
+                type="radio"
+                id="option1"
+                name="preference"
+                value="option1"
+                checked={formData.preferences.choice === 'option1'}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  preferences: { ...formData.preferences, choice: e.target.value }
+                })}
+              />
+              <label htmlFor="option1">Option 1</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="option2"
+                name="preference"
+                value="option2"
+                checked={formData.preferences.choice === 'option2'}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  preferences: { ...formData.preferences, choice: e.target.value }
+                })}
+              />
+              <label htmlFor="option2">Option 2</label>
+            </div>
+          </fieldset>
           <Button variant="secondary" onClick={() => setStep(1)}>Back</Button>
           <Button onClick={() => setStep(3)}>Next</Button>
         </div>
@@ -366,7 +402,7 @@ function MultiStepForm() {
 
 ```jsx
 import { TextInput } from '@sikt/sds-input';
-import { Checkbox } from '@sikt/sds-checkbox';
+import { CheckboxInput } from '@sikt/sds-checkbox';
 import { Button } from '@sikt/sds-button';
 import { Section } from '@sikt/sds-section';
 import { useState } from 'react';
@@ -416,9 +452,9 @@ function SectionedForm() {
       </Section>
 
       <Section title="Preferences">
-        <Checkbox
+        <CheckboxInput
           label="Subscribe to newsletter"
-          checked={formData.newsletter}
+          isChecked={formData.newsletter}
           onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
         />
       </Section>
@@ -452,7 +488,6 @@ function SectionedForm() {
 - [Input Component Storybook](https://designsystem.sikt.no/storybook/?path=/docs/components-input-readme--docs)
 - [npm Package: @sikt/sds-input](https://www.npmjs.com/package/@sikt/sds-input)
 - [npm Package: @sikt/sds-checkbox](https://www.npmjs.com/package/@sikt/sds-checkbox)
-- [npm Package: @sikt/sds-radio](https://www.npmjs.com/package/@sikt/sds-radio)
 
 ## Related Skills
 

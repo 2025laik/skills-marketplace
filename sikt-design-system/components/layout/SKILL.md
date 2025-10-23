@@ -15,7 +15,7 @@ This skill provides implementation examples for Sikt Design System layout compon
 npm install @sikt/sds-header @sikt/sds-footer @sikt/sds-card @sikt/sds-section @sikt/sds-button @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Header } from '@sikt/sds-header';
@@ -23,12 +23,6 @@ import { Footer } from '@sikt/sds-footer';
 import { Card } from '@sikt/sds-card';
 import { Section } from '@sikt/sds-section';
 import { Button } from '@sikt/sds-button';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-header/dist/index.css';
-import '@sikt/sds-footer/dist/index.css';
-import '@sikt/sds-card/dist/index.css';
-import '@sikt/sds-section/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
 ```
 
 ## Page Layout with Header and Footer

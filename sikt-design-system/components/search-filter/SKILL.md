@@ -15,16 +15,12 @@ This skill provides implementation examples for Sikt Design System search and fi
 npm install @sikt/sds-input @sikt/sds-select @sikt/sds-button @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { TextInput } from '@sikt/sds-input';
 import { Select } from '@sikt/sds-select';
 import { Button } from '@sikt/sds-button';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-input/dist/index.css';
-import '@sikt/sds-select/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
 ```
 
 ## Basic Search

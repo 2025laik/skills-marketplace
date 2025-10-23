@@ -15,14 +15,11 @@ This skill provides implementation examples for Sikt Design System drawer compon
 npm install @sikt/sds-drawer @sikt/sds-button @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Drawer } from '@sikt/sds-drawer';
 import { Button } from '@sikt/sds-button';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-drawer/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
 ```
 
 ## Basic Drawer

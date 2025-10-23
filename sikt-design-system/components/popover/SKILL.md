@@ -15,14 +15,11 @@ This skill provides implementation examples for Sikt Design System popover compo
 npm install @sikt/sds-popover @sikt/sds-button @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Popover } from '@sikt/sds-popover';
 import { Button } from '@sikt/sds-button';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-popover/dist/index.css';
-import '@sikt/sds-button/dist/index.css';
 ```
 
 ## Basic Popover

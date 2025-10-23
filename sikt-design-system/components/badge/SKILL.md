@@ -15,16 +15,12 @@ This skill provides implementation examples for Sikt Design System badge compone
 npm install @sikt/sds-badge @sikt/sds-message @sikt/sds-logo @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { Badge } from '@sikt/sds-badge';
 import { Message } from '@sikt/sds-message';
 import { Logo } from '@sikt/sds-logo';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-badge/dist/index.css';
-import '@sikt/sds-message/dist/index.css';
-import '@sikt/sds-logo/dist/index.css';
 ```
 
 ## Badge Component

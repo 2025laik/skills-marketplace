@@ -15,13 +15,13 @@ This skill provides implementation examples for Sikt Design System progress indi
 npm install @sikt/sds-progress-indicator @sikt/sds-core
 ```
 
-Import components and stylesheets:
+Import components:
 
 ```js
 import { ProgressIndicator, ProgressBar, Spinner } from '@sikt/sds-progress-indicator';
-import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-progress-indicator/dist/index.css';
 ```
+
+**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
 
 ## Progress Bar
 
