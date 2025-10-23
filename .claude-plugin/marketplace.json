@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "collection of skills for Sikt developers",
-    "version": "0.4.0"
+    "version": "0.6.0"
   },
   "plugins": [
     {
@@ -45,13 +45,37 @@
     },
     {
       "name": "sikt-design-system",
-      "description": "Sikt Design System skills including visual identity, design tokens, components, Storybook generation.",
+      "description": "Sikt Design System skills including visual identity, design tokens, components, and Storybook URL generation",
       "source": "./",
       "strict": false,
       "skills": [
+        "./sikt-design-system/components/accordion",
+        "./sikt-design-system/components/advanced-inputs",
+        "./sikt-design-system/components/alert",
+        "./sikt-design-system/components/badge",
+        "./sikt-design-system/components/button",
+        "./sikt-design-system/components/dialog",
+        "./sikt-design-system/components/drawer",
+        "./sikt-design-system/components/form",
+        "./sikt-design-system/components/icons",
+        "./sikt-design-system/components/layout",
+        "./sikt-design-system/components/list",
+        "./sikt-design-system/components/navigation",
+        "./sikt-design-system/components/popover",
+        "./sikt-design-system/components/progress",
+        "./sikt-design-system/components/search-filter",
+        "./sikt-design-system/components/table",
         "./sikt-design-system/general",
-        "./sikt-design-system/components",
         "./sikt-design-system/storybook"
+      ]
+    },
+    {
+      "name": "skill-creator",
+      "description": "Guide for creating effective skills, providing workflows and best practices for skill development",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skill-creator"
       ]
     }
   ]

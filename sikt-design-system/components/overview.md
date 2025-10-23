@@ -111,6 +111,47 @@ Components can be composed together to create complex interfaces while maintaini
 - **Storybook**: Interactive documentation and examples
 - **Slack**: Community support and questions
 
+## Component Implementation Skills
+
+The Sikt Design System component implementations are organized into focused skills for easy access:
+
+### Available Component Skills
+
+**Core Interaction:**
+- **sikt-design-button** - Button component examples with variants, sizes, and states
+- **sikt-design-form** - Form components including TextInput, Checkbox, Radio, Select with validation and Section grouping
+- **sikt-design-advanced-inputs** - Advanced input components: Combobox, InputDatepicker, InputFile, Toggle
+
+**Feedback & Messaging:**
+- **sikt-design-alert** - Alert and feedback patterns including toasts and status messages
+- **sikt-design-badge** - Badge, Message, and Logo components for status indicators and branding
+- **sikt-design-progress** - Progress indicators including progress bars, spinners, and step indicators
+
+**Overlays & Navigation:**
+- **sikt-design-dialog** - Dialog and modal patterns for confirmations and forms
+- **sikt-design-drawer** - Drawer and side panel components for navigation and filters
+- **sikt-design-popover** - Popover and tooltip components for contextual information
+- **sikt-design-navigation** - Navigation components including Tabs, Breadcrumbs, and menus
+
+**Data Display:**
+- **sikt-design-table** - Table components with sorting, pagination, and selection
+- **sikt-design-list** - List components including FilterList for data display
+- **sikt-design-search-filter** - Search and filter patterns for data lists
+
+**Layout & Structure:**
+- **sikt-design-layout** - Layout patterns including Header, Footer, Card, Section, and grid systems
+- **sikt-design-accordion** - Accordion and collapsible content components
+
+**Visual Elements:**
+- **sikt-design-icons** - Icon usage with accessibility patterns and component integration
+
+Each skill provides:
+- Ready-to-use code examples
+- Installation instructions
+- npm package references
+- Accessibility best practices
+- Storybook documentation links
+
 ## Best Practices
 
 1. **Use semantic components** - Choose components that match the semantic meaning of your content

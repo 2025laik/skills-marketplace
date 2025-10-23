@@ -4,12 +4,10 @@
 
 The Sikt design system utilizes **Phosphor Icons**, with a curated selection defining which icons are used for specific purposes.
 
-> "Sikt bruker ikonsettet Phosphor Icons. Vi har gjort et utvalg fra ikonsettet for å definere hvilke ikoner som brukes til hva."
-> (Sikt uses the Phosphor Icons set and has made a selection to define which icons are used for what.)
-
 ## Icon Categories
 
 ### UI
+
 - AI
 - Help
 - Link
@@ -25,6 +23,7 @@ The Sikt design system utilizes **Phosphor Icons**, with a curated selection def
 - User Remove
 
 ### Navigation
+
 - Menu
 - Expand/Collapse variants
 - Contextual Menu options
@@ -32,6 +31,7 @@ The Sikt design system utilizes **Phosphor Icons**, with a curated selection def
 - Directional navigation icons
 
 ### Action
+
 - Add
 - Delete
 - Edit
@@ -43,33 +43,39 @@ The Sikt design system utilizes **Phosphor Icons**, with a curated selection def
 - Undo/Redo
 
 ### Communication
+
 - Email
 - Message
 - Phone
 
 ### Time & Date
+
 - Calendar
 - Date
 - Time options
 
 ### Files
+
 - Folder
 - Attachment
 - Image Placeholder
 
 ### Sorting & Filtering
+
 - Filter
 - Sort
 - Reorder Handle
 - Adjust Settings
 
 ### Status
+
 - Alert
 - Success
 - Failed
 - Info
 
 ### Other Categories
+
 - Menu
 - Map
 - Categorization
@@ -78,6 +84,7 @@ The Sikt design system utilizes **Phosphor Icons**, with a curated selection def
 ## Implementation
 
 Each icon is available as:
+
 - **SVG file** for download
 - **Copy-to-clipboard** feature for easy integration
 
@@ -92,6 +99,7 @@ Each icon is available as:
 ## Integration
 
 Icons can be integrated into projects via:
+
 - Direct SVG embedding
 - Icon component libraries
 - Design token references for icon sizing
