@@ -200,13 +200,19 @@ import { Card } from '@sikt/sds-card';
 
 function BasicCard() {
   return (
-    <Card>
+    <Card style={{
+      backgroundColor: 'var(--sds-color-layout-surface-1)',
+      padding: 'var(--sds-space-padding-medium)',
+      borderRadius: 'var(--sds-size-border-radius-small)'
+    }}>
       <h3>Card Title</h3>
       <p>Card content goes here.</p>
     </Card>
   );
 }
 ```
+
+**Note:** Sikt cards use semantic surface tokens (`var(--sds-color-layout-surface-1)`) which automatically adapt to light/dark themes. This follows Sikt's layering hierarchy where surface-1 is the primary content layer on the page background.
 
 ### Card with Image
 
@@ -216,15 +222,19 @@ import { Button } from '@sikt/sds-button';
 
 function ImageCard({ title, description, image, link }) {
   return (
-    <Card>
+    <Card style={{
+      backgroundColor: 'var(--sds-color-layout-surface-1)',
+      borderRadius: 'var(--sds-size-border-radius-small)',
+      overflow: 'hidden'
+    }}>
       <img
         src={image}
         alt={title}
-        style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '4px 4px 0 0' }}
+        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
       />
-      <div style={{ padding: '16px' }}>
-        <h3 style={{ margin: '0 0 8px 0' }}>{title}</h3>
-        <p style={{ margin: '0 0 16px 0', color: '#666' }}>{description}</p>
+      <div style={{ padding: 'var(--sds-space-padding-medium)' }}>
+        <h3 style={{ margin: '0 0 var(--sds-space-gap-8) 0' }}>{title}</h3>
+        <p style={{ margin: '0 0 var(--sds-space-padding-medium) 0', color: 'var(--sds-color-text-primary)' }}>{description}</p>
         <a href={link}><Button>Learn More</Button></a>
       </div>
     </Card>
@@ -240,19 +250,21 @@ import { Button } from '@sikt/sds-button';
 
 function ActionCard({ title, description, onEdit, onDelete }) {
   return (
-    <Card>
-      <div style={{ padding: '16px' }}>
-        <h3>{title}</h3>
-        <p>{description}</p>
+    <Card style={{
+      backgroundColor: 'var(--sds-color-layout-surface-1)',
+      padding: 'var(--sds-space-padding-medium)',
+      borderRadius: 'var(--sds-size-border-radius-small)'
+    }}>
+      <h3>{title}</h3>
+      <p>{description}</p>
 
-        <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
-          <Button variant="secondary" onClick={onEdit}>
-            Edit
-          </Button>
-          <Button variant="danger" onClick={onDelete}>
-            Delete
-          </Button>
-        </div>
+      <div style={{ display: 'flex', gap: 'var(--sds-space-gap-12)', marginTop: 'var(--sds-space-padding-medium)' }}>
+        <Button variant="secondary" onClick={onEdit}>
+          Edit
+        </Button>
+        <Button variant="danger" onClick={onDelete}>
+          Delete
+        </Button>
       </div>
     </Card>
   );
@@ -270,20 +282,24 @@ function CardGrid({ items }) {
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-      gap: '24px'
+      gap: 'var(--sds-space-gap-24)'
     }}>
       {items.map((item, index) => (
-        <Card key={index}>
+        <Card key={index} style={{
+          backgroundColor: 'var(--sds-color-layout-surface-1)',
+          borderRadius: 'var(--sds-size-border-radius-small)',
+          overflow: 'hidden'
+        }}>
           {item.image && (
             <img
               src={item.image}
               alt={item.title}
-              style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '4px 4px 0 0' }}
+              style={{ width: '100%', height: '200px', objectFit: 'cover' }}
             />
           )}
-          <div style={{ padding: '16px' }}>
-            <h3 style={{ margin: '0 0 8px 0' }}>{item.title}</h3>
-            <p style={{ margin: '0 0 16px 0', color: '#666' }}>{item.description}</p>
+          <div style={{ padding: 'var(--sds-space-padding-medium)' }}>
+            <h3 style={{ margin: '0 0 var(--sds-space-gap-8) 0' }}>{item.title}</h3>
+            <p style={{ margin: '0 0 var(--sds-space-padding-medium) 0', color: 'var(--sds-color-text-primary)' }}>{item.description}</p>
             <a href={item.link}><Button>Learn More</Button></a>
           </div>
         </Card>

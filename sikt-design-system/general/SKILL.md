@@ -241,11 +241,37 @@ Interactive & Navigation: Button, Dialog, Filter List, List, Pagination, Popover
 }
 ```
 
+### "How do I style a card with proper backgrounds?"
+
+```css
+/* Card on page background */
+.my-card {
+  background: var(--sds-color-layout-surface-1);
+  padding: var(--sds-space-padding-medium);
+  border-radius: var(--sds-size-border-radius-small);
+}
+
+/* Elevated card or modal (layered on surface-1) */
+.my-modal {
+  background: var(--sds-color-layout-surface-2);
+  padding: var(--sds-space-padding-large);
+  border-radius: var(--sds-size-border-radius-small);
+}
+```
+
+**Important**: Use surface tokens for backgrounds, not interaction tokens. Surface tokens automatically adapt to light/dark themes.
+
 ### "What colors are available?"
+
+**Surface Colors** (for backgrounds and containers - theme-aware):
+- `--sds-color-layout-page-default` (page background)
+- `--sds-color-layout-surface-1` (primary content layer - use for cards on page)
+- `--sds-color-layout-surface-2` (secondary layer - use for elevated/nested content)
+- **Layering hierarchy**: Always start with surface-1 on page-default, then layer surface-2 on top
 
 **Interactive Colors** (for buttons, links, etc.):
 - Primary: `--sds-color-interaction-primary-strong/subtle/transparent`
-- Secondary: `--sds-color-interaction-secondary-strong/subtle/transparent`
+- Neutral: `--sds-color-interaction-neutral-strong/subtle/transparent`
 - All include hover/active states
 
 **Feedback Colors** (for alerts, messages):
@@ -358,8 +384,10 @@ Or use responsive tokens:
 ## Best Practices
 
 **Visual Identity:**
-- Purple should dominate compositions
-- Use support colors sparingly for accents
+- Purple is used as a subtle accent color throughout the design
+- Surface tokens provide theme-aware backgrounds that adapt to light/dark mode
+- Strong purple for primary actions (buttons) and interactive elements
+- Use support colors for specific feedback states (success, error, warning)
 - Maintain logo protection zones
 - Never modify logo proportions or colors
 
@@ -384,6 +412,10 @@ Or use responsive tokens:
 
 **Components:**
 - Use semantic components matching content meaning
+- Cards and containers use semantic surface tokens (`var(--sds-color-layout-surface-1)` for primary layer, `var(--sds-color-layout-surface-2)` for elevated content)
+- Surface tokens automatically adapt to light/dark themes
+- Apply consistent rounded corners (`var(--sds-size-border-radius-small)`)
+- Follow layering hierarchy: page-default → surface-1 → surface-2
 - Follow accessibility guidelines
 - Customize through design tokens
 - Test responsive behavior
