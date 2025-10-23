@@ -81,6 +81,11 @@ npm install @sikt/sds-core @sikt/sds-button @sikt/sds-card @sikt/sds-header
 - Secondary: Support colors for illustrations, data visualization, social media
 - Token-based color system for digital products
 
+**CRITICAL Design Principles:**
+- **NO GRADIENTS**: Avoid using gradients in any form. Use solid colors from the design system tokens
+- Use flat, solid colors for all UI elements (backgrounds, borders, text)
+- Gradients compromise accessibility, brand consistency, and visual clarity
+
 **Typography:**
 - Primary font: Haffer (Regular 400, Semibold 600, Bold 700)
 - Fallback: Arial

@@ -15,12 +15,21 @@ This skill provides implementation examples for Sikt Design System popover compo
 npm install @sikt/sds-popover @sikt/sds-button @sikt/sds-core
 ```
 
-Import components:
+Import the core CSS file (REQUIRED) and components:
 
 ```js
+// REQUIRED: Import core styles for design tokens, base styles, and component styling
+import '@sikt/sds-core/dist/index.css';
+
+// Import components
 import { Popover } from '@sikt/sds-popover';
 import { Button } from '@sikt/sds-button';
 ```
+
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` for components to display correctly with borders, outlines, and proper styling
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- Components will not have proper styling without the core CSS import
 
 ## Basic Popover
 

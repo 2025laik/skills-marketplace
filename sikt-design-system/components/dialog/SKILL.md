@@ -15,13 +15,22 @@ This skill provides implementation examples for Sikt Design System dialog and mo
 npm install @sikt/sds-dialog @sikt/sds-button @sikt/sds-input @sikt/sds-core
 ```
 
-Import components:
+Import the core CSS file (REQUIRED) and components:
 
 ```js
+// REQUIRED: Import core styles for design tokens, base styles, and component styling
+import '@sikt/sds-core/dist/index.css';
+
+// Import components
 import { Dialog } from '@sikt/sds-dialog';
 import { Button } from '@sikt/sds-button';
 import { TextInput } from '@sikt/sds-input';
 ```
+
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` for components to display correctly with borders, outlines, and proper styling
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- Components will not have proper styling without the core CSS import
 
 ## Basic Dialog
 

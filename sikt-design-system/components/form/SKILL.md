@@ -15,9 +15,13 @@ This skill provides implementation examples for Sikt Design System form componen
 npm install @sikt/sds-input @sikt/sds-checkbox @sikt/sds-select @sikt/sds-button @sikt/sds-section @sikt/sds-core
 ```
 
-Import components:
+Import the core CSS file (REQUIRED) and components:
 
 ```js
+// REQUIRED: Import core styles for design tokens, base styles, and component styling
+import '@sikt/sds-core/dist/index.css';
+
+// Import components
 import { TextInput } from '@sikt/sds-input';
 import { CheckboxInput } from '@sikt/sds-checkbox';
 import { Select } from '@sikt/sds-select';
@@ -25,7 +29,10 @@ import { Button } from '@sikt/sds-button';
 import { Section } from '@sikt/sds-section';
 ```
 
-**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` for components to display correctly with borders, outlines, and proper styling
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- Components will not have borders, focus outlines, or proper styling without the core CSS import
 
 ## Basic Text Input
 
@@ -240,9 +247,9 @@ function ContactForm() {
   return (
     <form onSubmit={handleSubmit} noValidate>
       {Object.keys(errors).length > 0 && (
-        <div style={{ marginBottom: '24px', padding: '16px', backgroundColor: '#fde8e8', border: '2px solid #e84c3d', borderRadius: '4px' }}>
-          <h2 style={{ margin: '0 0 12px 0', fontSize: '16px', fontWeight: 'bold' }}>Please correct the following errors:</h2>
-          <ul style={{ margin: 0, paddingLeft: '24px' }}>
+        <div className="error-summary">
+          <h2>Please correct the following errors:</h2>
+          <ul>
             {Object.entries(errors).map(([key, message]) => (
               <li key={key}>{message}</li>
             ))}
@@ -250,19 +257,20 @@ function ContactForm() {
         </div>
       )}
 
-      <div style={{ marginBottom: '16px' }}>
+      <div className="form-field">
         <TextInput
           label="Name"
           id="name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? "name-error" : undefined}
           required
         />
-        {errors.name && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.name}</span>}
+        {errors.name && <span id="name-error" className="error-message">{errors.name}</span>}
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
+      <div className="form-field">
         <TextInput
           label="Email"
           type="email"
@@ -270,12 +278,13 @@ function ContactForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : undefined}
           required
         />
-        {errors.email && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.email}</span>}
+        {errors.email && <span id="email-error" className="error-message">{errors.email}</span>}
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
+      <div className="form-field">
         <label htmlFor="message">Message</label>
         <textarea
           id="message"
@@ -283,25 +292,86 @@ function ContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           rows={5}
           required
-          style={{ width: '100%', padding: '8px', border: '2px solid #ccc', borderRadius: '4px' }}
+          className={errors.message ? 'textarea-error' : ''}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
-        {errors.message && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.message}</span>}
+        {errors.message && <span id="message-error" className="error-message">{errors.message}</span>}
       </div>
 
-      <div style={{ marginBottom: '16px' }}>
+      <div className="form-field">
         <CheckboxInput
           label="I accept the terms and conditions"
           id="consent"
           isChecked={formData.consent}
           onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
           aria-invalid={!!errors.consent}
+          aria-describedby={errors.consent ? "consent-error" : undefined}
         />
-        {errors.consent && <span style={{ color: '#e84c3d', fontSize: '14px' }}>{errors.consent}</span>}
+        {errors.consent && <span id="consent-error" className="error-message">{errors.consent}</span>}
       </div>
 
       <Button type="submit">Send Message</Button>
     </form>
   );
+}
+```
+
+**Required CSS (using Sikt design tokens):**
+
+```css
+/* Form field spacing */
+.form-field {
+  margin-bottom: var(--sds-space-padding-medium);
+}
+
+/* Error summary box - NO GRADIENTS, solid colors with borders */
+.error-summary {
+  margin-bottom: var(--sds-space-padding-large);
+  padding: var(--sds-space-padding-medium);
+  background-color: var(--sds-color-support-critical-subtle);
+  border: var(--sds-size-border-regular) solid var(--sds-color-support-critical-strong);
+  border-radius: var(--sds-size-border-radius-small);
+}
+
+.error-summary h2 {
+  margin: 0 0 var(--sds-space-padding-small) 0;
+  font: var(--sds-typography-body-medium);
+  font-weight: 600;
+  color: var(--sds-color-text-critical);
+}
+
+.error-summary ul {
+  margin: 0;
+  padding-left: var(--sds-space-padding-large);
+  color: var(--sds-color-text-critical);
+}
+
+/* Inline error messages */
+.error-message {
+  display: block;
+  margin-top: var(--sds-space-padding-small);
+  font: var(--sds-typography-body-small);
+  color: var(--sds-color-text-critical);
+}
+
+/* Textarea with proper border */
+.form-field textarea {
+  width: 100%;
+  padding: var(--sds-space-padding-small);
+  border: var(--sds-size-border-regular) solid var(--sds-color-layout-divider-strong);
+  border-radius: var(--sds-size-border-radius-small);
+  font: var(--sds-typography-body-medium);
+  background-color: var(--sds-color-surface-primary);
+}
+
+.form-field textarea:focus {
+  outline: var(--sds-size-border-regular) solid var(--sds-color-interaction-focus);
+  outline-offset: 2px;
+}
+
+.form-field textarea.textarea-error {
+  border-color: var(--sds-color-support-critical-strong);
 }
 ```
 

@@ -15,13 +15,20 @@ This skill provides implementation examples for Sikt Design System button compon
 npm install @sikt/sds-button @sikt/sds-core
 ```
 
-Import components:
+Import the core CSS file (REQUIRED) and component:
 
 ```js
+// REQUIRED: Import core styles for design tokens, base styles, and component styling
+import '@sikt/sds-core/dist/index.css';
+
+// Import component
 import { Button } from '@sikt/sds-button';
 ```
 
-**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` for buttons to display correctly with borders, outlines, and proper styling
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- Buttons will not have proper focus outlines or styling without the core CSS import
 
 ## Button Variants
 

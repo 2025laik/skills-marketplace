@@ -15,13 +15,20 @@ This skill provides implementation examples for Sikt Design System alert and fee
 npm install @sikt/sds-button @sikt/sds-core
 ```
 
-Import components:
+Import the core CSS file (REQUIRED) and components:
 
 ```js
+// REQUIRED: Import core styles for design tokens, base styles, and component styling
+import '@sikt/sds-core/dist/index.css';
+
+// Import components
 import { Button } from '@sikt/sds-button';
 ```
 
-**IMPORTANT**: Do NOT import component-specific CSS files when using these components. The components handle their own styling. Only import `@sikt/sds-core/dist/index.css` if you need core styles for your application layout.
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` for components to display correctly with borders, outlines, and proper styling
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- Components will not have proper styling without the core CSS import
 
 ## Toast Notification System
 
@@ -38,28 +45,11 @@ function ToastNotification({ message, variant, duration = 5000, onClose }) {
     return () => clearTimeout(timer);
   }, [duration, onClose]);
 
-  const variantStyles = {
-    success: { backgroundColor: '#d4edda', borderColor: '#28a745', color: '#155724' },
-    error: { backgroundColor: '#f8d7da', borderColor: '#dc3545', color: '#721c24' },
-    warning: { backgroundColor: '#fff3cd', borderColor: '#ffc107', color: '#856404' },
-    info: { backgroundColor: '#d1ecf1', borderColor: '#17a2b8', color: '#0c5460' }
-  };
-
   return (
-    <div style={{
-      position: 'fixed',
-      top: '20px',
-      right: '20px',
-      zIndex: 1000,
-      maxWidth: '400px',
-      padding: '16px',
-      border: '2px solid',
-      borderRadius: '4px',
-      ...variantStyles[variant]
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
-        <p style={{ margin: 0 }}>{message}</p>
-        <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px' }}>×</button>
+    <div className={`toast toast-${variant}`}>
+      <div className="toast-content">
+        <p>{message}</p>
+        <button onClick={onClose} className="toast-close" aria-label="Close notification">×</button>
       </div>
     </div>
   );
@@ -100,6 +90,77 @@ function App() {
 }
 ```
 
+**Required CSS for toasts (using Sikt design tokens - NO GRADIENTS, solid colors only):**
+
+```css
+/* Base toast styling */
+.toast {
+  position: fixed;
+  top: var(--sds-space-padding-large);
+  right: var(--sds-space-padding-large);
+  z-index: 1000;
+  max-width: 400px;
+  padding: var(--sds-space-padding-medium);
+  border: var(--sds-size-border-regular) solid;
+  border-radius: var(--sds-size-border-radius-small);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.toast-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sds-space-padding-medium);
+}
+
+.toast-content p {
+  margin: 0;
+  flex: 1;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.7;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+/* Success variant */
+.toast-success {
+  background-color: var(--sds-color-support-success-subtle);
+  border-color: var(--sds-color-support-success-strong);
+  color: var(--sds-color-text-success);
+}
+
+/* Error variant */
+.toast-error {
+  background-color: var(--sds-color-support-critical-subtle);
+  border-color: var(--sds-color-support-critical-strong);
+  color: var(--sds-color-text-critical);
+}
+
+/* Warning variant */
+.toast-warning {
+  background-color: var(--sds-color-support-warning-subtle);
+  border-color: var(--sds-color-support-warning-strong);
+  color: var(--sds-color-text-warning);
+}
+
+/* Info variant */
+.toast-info {
+  background-color: var(--sds-color-support-info-subtle);
+  border-color: var(--sds-color-support-info-strong);
+  color: var(--sds-color-text-info);
+}
+```
+
 ## Alert Variants
 
 ### Success Alert
@@ -107,17 +168,10 @@ function App() {
 ```jsx
 function SuccessAlert({ message, onClose }) {
   return (
-    <div style={{
-      padding: '16px',
-      backgroundColor: '#d4edda',
-      border: '2px solid #28a745',
-      borderRadius: '4px',
-      color: '#155724',
-      marginBottom: '16px'
-    }}>
+    <div className="alert alert-success">
       <strong>Success:</strong> {message}
       {onClose && (
-        <button onClick={onClose} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer' }}>×</button>
+        <button onClick={onClose} className="alert-close" aria-label="Close alert">×</button>
       )}
     </div>
   );
@@ -129,17 +183,10 @@ function SuccessAlert({ message, onClose }) {
 ```jsx
 function ErrorAlert({ message, onClose }) {
   return (
-    <div style={{
-      padding: '16px',
-      backgroundColor: '#f8d7da',
-      border: '2px solid #dc3545',
-      borderRadius: '4px',
-      color: '#721c24',
-      marginBottom: '16px'
-    }}>
+    <div className="alert alert-error">
       <strong>Error:</strong> {message}
       {onClose && (
-        <button onClick={onClose} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer' }}>×</button>
+        <button onClick={onClose} className="alert-close" aria-label="Close alert">×</button>
       )}
     </div>
   );
@@ -151,17 +198,10 @@ function ErrorAlert({ message, onClose }) {
 ```jsx
 function WarningAlert({ message, onClose }) {
   return (
-    <div style={{
-      padding: '16px',
-      backgroundColor: '#fff3cd',
-      border: '2px solid #ffc107',
-      borderRadius: '4px',
-      color: '#856404',
-      marginBottom: '16px'
-    }}>
+    <div className="alert alert-warning">
       <strong>Warning:</strong> {message}
       {onClose && (
-        <button onClick={onClose} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer' }}>×</button>
+        <button onClick={onClose} className="alert-close" aria-label="Close alert">×</button>
       )}
     </div>
   );
@@ -173,20 +213,71 @@ function WarningAlert({ message, onClose }) {
 ```jsx
 function InfoAlert({ message, onClose }) {
   return (
-    <div style={{
-      padding: '16px',
-      backgroundColor: '#d1ecf1',
-      border: '2px solid #17a2b8',
-      borderRadius: '4px',
-      color: '#0c5460',
-      marginBottom: '16px'
-    }}>
+    <div className="alert alert-info">
       <strong>Info:</strong> {message}
       {onClose && (
-        <button onClick={onClose} style={{ float: 'right', background: 'none', border: 'none', cursor: 'pointer' }}>×</button>
+        <button onClick={onClose} className="alert-close" aria-label="Close alert">×</button>
       )}
     </div>
   );
+}
+```
+
+**Required CSS for alerts (using Sikt design tokens - NO GRADIENTS, solid colors with borders):**
+
+```css
+/* Base alert styling */
+.alert {
+  padding: var(--sds-space-padding-medium);
+  border: var(--sds-size-border-regular) solid;
+  border-radius: var(--sds-size-border-radius-small);
+  margin-bottom: var(--sds-space-padding-medium);
+  position: relative;
+}
+
+.alert-close {
+  position: absolute;
+  top: var(--sds-space-padding-small);
+  right: var(--sds-space-padding-small);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.7;
+}
+
+.alert-close:hover {
+  opacity: 1;
+}
+
+/* Success alert */
+.alert-success {
+  background-color: var(--sds-color-support-success-subtle);
+  border-color: var(--sds-color-support-success-strong);
+  color: var(--sds-color-text-success);
+}
+
+/* Error/Critical alert */
+.alert-error {
+  background-color: var(--sds-color-support-critical-subtle);
+  border-color: var(--sds-color-support-critical-strong);
+  color: var(--sds-color-text-critical);
+}
+
+/* Warning alert */
+.alert-warning {
+  background-color: var(--sds-color-support-warning-subtle);
+  border-color: var(--sds-color-support-warning-strong);
+  color: var(--sds-color-text-warning);
+}
+
+/* Info alert */
+.alert-info {
+  background-color: var(--sds-color-support-info-subtle);
+  border-color: var(--sds-color-support-info-strong);
+  color: var(--sds-color-text-info);
 }
 ```
 

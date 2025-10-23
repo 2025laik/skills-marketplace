@@ -15,15 +15,24 @@ This skill provides implementation examples for Sikt Design System layout compon
 npm install @sikt/sds-header @sikt/sds-footer @sikt/sds-card @sikt/sds-section @sikt/sds-button @sikt/sds-core
 ```
 
-Import components:
+Import the core CSS file (REQUIRED) and components:
 
 ```js
+// REQUIRED: Import core styles for design tokens, base styles, and component styling
+import '@sikt/sds-core/dist/index.css';
+
+// Import components
 import { Header } from '@sikt/sds-header';
 import { Footer } from '@sikt/sds-footer';
 import { Card } from '@sikt/sds-card';
 import { Section } from '@sikt/sds-section';
 import { Button } from '@sikt/sds-button';
 ```
+
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` for components to display correctly with borders, outlines, and proper styling
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- Components will not have proper styling without the core CSS import
 
 ## Page Layout with Header and Footer
 
