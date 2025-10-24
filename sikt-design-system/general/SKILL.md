@@ -48,10 +48,11 @@ npm install @sikt/sds-core @sikt/sds-button @sikt/sds-card @sikt/sds-header
 
 ### Just Starting?
 1. **Install core** package and desired components via npm
-2. **Choose components** from 43 available options (buttons, forms, cards, etc.)
-3. **Apply design tokens** for colors, spacing, and typography
-4. **Follow responsive breakpoints**: Mobile (<720px), Tablet (720px), Desktop (1024px)
-5. **Test accessibility** using the built-in guidelines
+2. **Import CSS** once in your app entry point: `import '@sikt/sds-core/dist/index.css';`
+3. **Choose components** from 43 available options (buttons, forms, cards, etc.)
+4. **Apply design tokens** for colors, spacing, and typography
+5. **Follow responsive breakpoints**: Mobile (<720px), Tablet (720px), Desktop (1024px)
+6. **Test accessibility** using the built-in guidelines
 
 ### Need Something Specific?
 - **Building a form?** → See Form & Input Components section
@@ -60,6 +61,379 @@ npm install @sikt/sds-core @sikt/sds-button @sikt/sds-card @sikt/sds-header
 - **Need component docs?** → Use the `sikt-design-system/storybook` skill for URLs
 - **Need code examples?** → Use the `sikt-design-system/components` skill
 - **Need installation help?** → See the Installation section above
+- **Setting up a new project?** → See the Framework Setup Guides section below
+
+## Framework Setup Guides
+
+### React (Create React App)
+
+1. Create new app and install dependencies:
+```bash
+npx create-react-app my-sikt-app
+cd my-sikt-app
+npm install @sikt/sds-core @sikt/sds-button
+```
+
+2. Import CSS in `src/index.js` or `src/index.tsx`:
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@sikt/sds-core/dist/index.css'; // Import Sikt styles FIRST
+import './index.css'; // Your custom styles after
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
+
+3. Use components in `src/App.js`:
+```jsx
+import { Button } from '@sikt/sds-button';
+
+function App() {
+  return (
+    <div style={{ padding: '24px' }}>
+      <h1>My Sikt App</h1>
+      <Button variant="primary">Click me</Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### React (Vite)
+
+1. Create new app and install dependencies:
+```bash
+npm create vite@latest my-sikt-app -- --template react-ts
+cd my-sikt-app
+npm install
+npm install @sikt/sds-core @sikt/sds-button
+```
+
+2. Import CSS in `src/main.tsx`:
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@sikt/sds-core/dist/index.css'; // Import Sikt styles FIRST
+import './index.css'; // Your custom styles after
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+3. Use components in `src/App.tsx`:
+```tsx
+import { Button } from '@sikt/sds-button';
+
+function App() {
+  return (
+    <div style={{ padding: '24px' }}>
+      <h1>My Sikt App</h1>
+      <Button variant="primary">Click me</Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Next.js (App Router - Next.js 13+)
+
+1. Create new app and install dependencies:
+```bash
+npx create-next-app@latest my-sikt-app
+cd my-sikt-app
+npm install @sikt/sds-core @sikt/sds-button
+```
+
+2. Import CSS in `app/layout.tsx`:
+```tsx
+import '@sikt/sds-core/dist/index.css'; // Import Sikt styles FIRST
+import './globals.css'; // Your custom styles after
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+3. Use components in `app/page.tsx`:
+```tsx
+import { Button } from '@sikt/sds-button';
+
+export default function Home() {
+  return (
+    <div style={{ padding: '24px' }}>
+      <h1>My Sikt App</h1>
+      <Button variant="primary">Click me</Button>
+    </div>
+  );
+}
+```
+
+### Next.js (Pages Router - Next.js 12 and earlier)
+
+1. Create new app and install dependencies:
+```bash
+npx create-next-app@latest my-sikt-app
+cd my-sikt-app
+npm install @sikt/sds-core @sikt/sds-button
+```
+
+2. Import CSS in `pages/_app.tsx`:
+```tsx
+import '@sikt/sds-core/dist/index.css'; // Import Sikt styles FIRST
+import '../styles/globals.css'; // Your custom styles after
+import type { AppProps } from 'next/app';
+
+export default function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />;
+}
+```
+
+3. Use components in `pages/index.tsx`:
+```tsx
+import { Button } from '@sikt/sds-button';
+
+export default function Home() {
+  return (
+    <div style={{ padding: '24px' }}>
+      <h1>My Sikt App</h1>
+      <Button variant="primary">Click me</Button>
+    </div>
+  );
+}
+```
+
+## Adding Sikt to an Existing Project
+
+If you have an existing project and want to add Sikt Design System:
+
+### Step 1: Install Dependencies
+```bash
+npm install @sikt/sds-core
+# Add specific components as needed
+npm install @sikt/sds-button @sikt/sds-input @sikt/sds-card
+```
+
+### Step 2: Import CSS
+Add the CSS import to your application entry point (ONCE):
+- **React/Vite**: `src/main.tsx` or `src/index.tsx`
+- **Next.js App Router**: `app/layout.tsx`
+- **Next.js Pages Router**: `pages/_app.tsx`
+
+```tsx
+import '@sikt/sds-core/dist/index.css';
+```
+
+**IMPORTANT**: Import Sikt CSS BEFORE your custom CSS to allow easy overrides.
+
+### Step 3: Replace Components Gradually
+You don't need to convert everything at once. Start with one component type:
+
+**Before (custom button):**
+```tsx
+<button className="custom-btn primary" onClick={handleClick}>
+  Submit
+</button>
+```
+
+**After (Sikt button):**
+```tsx
+import { Button } from '@sikt/sds-button';
+
+<Button variant="primary" onClick={handleClick}>
+  Submit
+</Button>
+```
+
+### Step 4: Update Colors and Spacing
+Replace hard-coded colors with Sikt design tokens:
+
+**Before:**
+```css
+.my-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 4px;
+}
+```
+
+**After:**
+```css
+.my-card {
+  background: var(--sds-color-layout-surface-1);
+  padding: var(--sds-space-padding-medium);
+  border-radius: var(--sds-size-border-radius-small);
+}
+```
+
+## Dark Mode Implementation
+
+The Sikt Design System supports light and dark themes through theme-aware design tokens. Surface tokens automatically adapt when dark mode is enabled.
+
+### Enabling Dark Mode
+
+Add a `data-theme` attribute to your root HTML element:
+
+```html
+<html data-theme="dark">
+  <!-- Your app -->
+</html>
+```
+
+Or in React:
+```tsx
+<html data-theme={isDarkMode ? 'dark' : 'light'}>
+  <body>{children}</body>
+</html>
+```
+
+### Theme Toggle Implementation
+
+```tsx
+import { Button } from '@sikt/sds-button';
+import { useState, useEffect } from 'react';
+
+function ThemeToggle() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Apply theme to html element
+    document.documentElement.setAttribute(
+      'data-theme',
+      isDarkMode ? 'dark' : 'light'
+    );
+  }, [isDarkMode]);
+
+  return (
+    <Button onClick={() => setIsDarkMode(!isDarkMode)}>
+      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+    </Button>
+  );
+}
+```
+
+### Theme Persistence
+
+Save theme preference to localStorage:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+function useTheme() {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check localStorage on mount
+    const saved = localStorage.getItem('theme');
+    return saved === 'dark';
+  });
+
+  useEffect(() => {
+    // Update HTML and save to localStorage
+    const theme = isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
+  return { isDarkMode, toggleTheme };
+}
+
+// Usage in your app
+function App() {
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  return (
+    <div>
+      <Button onClick={toggleTheme}>
+        Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
+      </Button>
+    </div>
+  );
+}
+```
+
+### Respecting System Preference
+
+Automatically use the user's system theme preference:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+function useTheme() {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check localStorage first, then system preference
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    const theme = isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [isDarkMode]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        setIsDarkMode(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
+  return { isDarkMode, toggleTheme };
+}
+```
+
+### Theme-Aware Components
+
+When using Sikt components, surface tokens automatically adapt:
+
+```tsx
+// This card will automatically switch colors in dark mode
+<div style={{
+  background: 'var(--sds-color-layout-surface-1)',
+  padding: 'var(--sds-space-padding-medium)',
+  borderRadius: 'var(--sds-size-border-radius-small)'
+}}>
+  <h2 style={{ color: 'var(--sds-color-text-primary)' }}>
+    Card Title
+  </h2>
+  <p style={{ color: 'var(--sds-color-text-secondary)' }}>
+    This content adapts to light/dark theme automatically.
+  </p>
+</div>
+```
+
+**Key Theme-Aware Tokens:**
+- `--sds-color-layout-page-default` - Page background
+- `--sds-color-layout-surface-1` - Primary content layer
+- `--sds-color-layout-surface-2` - Elevated content layer
+- `--sds-color-text-primary` - Main text color
+- `--sds-color-text-secondary` - Muted text color
 
 ## When to Use This Skill
 
@@ -155,6 +529,15 @@ All components follow the pattern `@sikt/sds-<component-type>`. Use the table be
 | Alerts | Message component | See Storybook for exact package |
 | Icons | `@sikt/sds-icons` | `npm install @sikt/sds-icons` |
 | Design tokens | `@sikt/sds-tokens` | `npm install @sikt/sds-tokens` |
+
+**About `@sikt/sds-form`:**
+The `@sikt/sds-form` package provides shared form utilities, styles, and base components required by all form input components (TextInput, Checkbox, Select, etc.). It includes:
+- Common form field layouts and spacing
+- Label and error message styling
+- Form validation helpers
+- Shared accessibility features
+
+**When to install it:** Include `@sikt/sds-form` whenever you use any form input component. It's a peer dependency that ensures consistent form behavior across all input types.
 
 For complete list of 43+ components, use the `sikt-design-storybook` skill to find Storybook documentation URLs.
 
@@ -380,6 +763,153 @@ Or use responsive tokens:
   padding: var(--sds-space-padding-medium); /* Handles all breakpoints */
 }
 ```
+
+## Troubleshooting
+
+### Styles Not Loading
+
+**Problem:** Components appear unstyled or have no borders/outlines.
+
+**Solution:**
+1. Verify CSS import is present in your app entry point:
+   ```tsx
+   import '@sikt/sds-core/dist/index.css';
+   ```
+2. Check the import is BEFORE your custom CSS
+3. Ensure you're importing from the correct path (`/dist/index.css`)
+4. Clear your build cache and restart dev server:
+   ```bash
+   rm -rf node_modules/.vite  # For Vite
+   rm -rf .next                # For Next.js
+   npm start                   # Restart
+   ```
+
+### Fonts Not Displaying
+
+**Problem:** Text appears in Arial instead of Haffer font.
+
+**Solution:**
+- Haffer font is included in `@sikt/sds-core/dist/index.css`
+- Verify the CSS file is imported
+- Check browser DevTools Network tab to confirm font files are loading
+- If behind a firewall, ensure font CDN is not blocked
+
+### Components Not Found / Import Errors
+
+**Problem:** `Cannot find module '@sikt/sds-button'` or similar error.
+
+**Solution:**
+1. Verify package is installed:
+   ```bash
+   npm list @sikt/sds-button
+   ```
+2. If not installed, install it:
+   ```bash
+   npm install @sikt/sds-button
+   ```
+3. Restart your dev server after installing
+
+### TypeScript Errors
+
+**Problem:** TypeScript complains about missing types.
+
+**Solution:**
+- All Sikt packages include TypeScript definitions
+- If types are missing, ensure you're using the latest version:
+  ```bash
+  npm update @sikt/sds-core @sikt/sds-button
+  ```
+- Restart your TypeScript server in your IDE
+
+### Dark Mode Not Working
+
+**Problem:** Dark mode doesn't activate when `data-theme="dark"` is set.
+
+**Solution:**
+1. Verify `data-theme` attribute is on the `<html>` element (not `<body>`)
+2. Check in browser DevTools that the attribute is present
+3. Ensure you're using theme-aware tokens (`--sds-color-layout-surface-1`, not hard-coded colors)
+4. Clear browser cache and reload
+
+### Build Errors with CSS
+
+**Problem:** Build fails with CSS-related errors.
+
+**Solution:**
+- Ensure your bundler supports CSS imports
+- For Vite: CSS is supported by default
+- For webpack: Ensure `css-loader` is configured
+- For Next.js: CSS imports work out of the box in `_app.tsx` or `layout.tsx`
+
+### Components Look Different Than Storybook
+
+**Problem:** Components don't match Storybook examples.
+
+**Solution:**
+1. Verify you're using the latest version:
+   ```bash
+   npm update @sikt/sds-core @sikt/sds-button
+   ```
+2. Check if custom CSS is overriding Sikt styles
+3. Use browser DevTools to inspect which styles are being applied
+4. Ensure Sikt CSS is imported BEFORE custom CSS
+
+### Performance Issues
+
+**Problem:** Large bundle size or slow initial load.
+
+**Solution:**
+- Sikt Design System uses tree-shaking - only imported components are bundled
+- Import components individually, not the entire package
+- Use code splitting for large applications
+- Consider lazy-loading components that aren't immediately visible
+
+## Framework Support
+
+Sikt Design System officially supports the following frameworks and environments:
+
+### Fully Supported
+
+| Framework/Tool | Version | Status | Notes |
+|----------------|---------|--------|-------|
+| React | 16.8+ | ✅ Full support | Hooks required (16.8+) |
+| Next.js | 12+ | ✅ Full support | Both App Router and Pages Router |
+| Vite | 3+ | ✅ Full support | Recommended for new React projects |
+| Create React App | 5+ | ✅ Full support | Legacy, but fully supported |
+| TypeScript | 4+ | ✅ Full support | Type definitions included |
+
+### Experimental/Community Support
+
+| Framework/Tool | Status | Notes |
+|----------------|--------|-------|
+| Vue.js | ⚠️ Experimental | Community packages available, not officially maintained |
+| Svelte | ⚠️ Experimental | Community wrappers exist, test thoroughly |
+| Angular | ⚠️ Experimental | Web components approach recommended |
+| Remix | ⚠️ Experimental | Should work like standard React, not extensively tested |
+| Astro | ⚠️ Experimental | React integration should work, verify SSR behavior |
+
+### Not Supported
+
+| Framework/Tool | Status | Notes |
+|----------------|--------|-------|
+| React Native | ❌ Not supported | Design system is web-only, tokens not compatible |
+| Electron | ⚠️ Limited | Web views work, but desktop-specific features not optimized |
+
+### Browser Support
+
+| Browser | Version | Status |
+|---------|---------|--------|
+| Chrome | Last 2 versions | ✅ Fully supported |
+| Firefox | Last 2 versions | ✅ Fully supported |
+| Safari | Last 2 versions | ✅ Fully supported |
+| Edge | Last 2 versions | ✅ Fully supported |
+| IE 11 | - | ❌ Not supported |
+
+**Accessibility:** All components tested with:
+- NVDA (Windows)
+- VoiceOver (macOS/iOS)
+- TalkBack (Android)
+- JAWS (Windows)
 
 ## Best Practices
 

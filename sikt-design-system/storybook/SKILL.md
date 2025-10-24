@@ -40,11 +40,19 @@ npm install @sikt/sds-<component-name>
 | Table | `npm install @sikt/sds-core @sikt/sds-table` |
 | Header | `npm install @sikt/sds-core @sikt/sds-header` |
 
-After installation, import the CSS:
+After installation, import the core CSS (REQUIRED):
 ```js
+// REQUIRED: Import core styles ONCE in your app entry point
 import '@sikt/sds-core/dist/index.css';
-import '@sikt/sds-button/dist/index.css'; // and other components
+
+// Import components
+import { Button } from '@sikt/sds-button';
 ```
+
+**CRITICAL**:
+- You MUST import `@sikt/sds-core/dist/index.css` ONCE in your application entry point
+- Do NOT import component-specific CSS files (e.g., `@sikt/sds-button/dist/index.css`) - these are not needed
+- All component styling is included in the core CSS file
 
 ## When to Use This Skill
 
