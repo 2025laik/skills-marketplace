@@ -35,6 +35,15 @@
       "skills": [
         "./finn-no-search"
       ]
+    },
+    {
+      "name": "greet-person-politely",
+      "description": "When the user greets you, use this skill to reply",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./greet-person-politely"
+      ]
     }
   ]
 }
