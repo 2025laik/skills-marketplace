@@ -1,25 +1,24 @@
-# Sikt Claude Skills
+# 2025LAIK Claude Skills
 
-##  i `claude code`
+A marketplace for Claude Skills. Add skills to extend Claude's capabilities with specialized knowledge and workflows.
 
-```
-claude
-/plugin marketplace add https://gitlab.sikt.no/ki-team/initiatives/skills.git
-```
+## Installation
 
-legg til spesifikke skills:
+Add this marketplace to Claude Code:
 
 ```
-claude
-/plugin install platon-aws-skills@sikt-skills-marketplace
+/plugin marketplace add https://github.com/2025laik/skills-marketplace.git
 ```
 
-en oversikt over alle plugins finnes i [marketplace](.claude-plugin/marketplace.json).
+Install the skill-creator:
 
-# nye skills
+```
+/plugin install skill-creator@2025laik-skills-marketplace
+```
 
-trenger kun en mappe med en `SKILL.md`-fil med metadata-frontmatter og diverse instrukser.
-se [template-skill](template-skill/SKILL.md), evt:
+## Adding New Skills
+
+Create a new skill directory with a `SKILL.md` file. See [template-skill](template-skill/SKILL.md) for an example:
 
 ```markdown
 ---
@@ -31,3 +30,11 @@ description: a clear description of what this skill does and when to use it
 
 your stuff here.
 ```
+
+After adding new skills to the repository, update [marketplace.json](.claude-plugin/marketplace.json) by running:
+
+```bash
+./marketplace.update.sh
+```
+
+This will automatically scan the repository and update the marketplace configuration.

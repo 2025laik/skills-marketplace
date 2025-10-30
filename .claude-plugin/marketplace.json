@@ -1,81 +1,30 @@
 {
-  "name": "sikt-skills-marketplace",
+  "name": "2025laik-skills-marketplace",
   "owner": {
-    "name": "tollef jørgensen",
-    "email": "tollef.jorgensen@sikt.no"
+    "name": "2025LAIK",
+    "email": "info@2025laik.no"
   },
   "metadata": {
-    "description": "collection of skills for Sikt developers",
-    "version": "0.6.0"
+    "description": "Claude Skills marketplace for 2025LAIK",
+    "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "platon-aws-skills",
-      "description": "Collection of AWS-related skills including CLI access, core principles, and PostgreSQL configuration",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./platon-skills/aws/cli-access",
-        "./platon-skills/aws/core-principles",
-        "./platon-skills/aws/postgresql"
-      ]
-    },
-    {
-      "name": "platon-infrastructure-skills",
-      "description": "Collection of infrastructure and operations skills including DNS, email, kubectl, and logging",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./platon-skills/dns/config",
-        "./platon-skills/email-sending",
-        "./platon-skills/kubectl/basics",
-        "./platon-skills/logging/loki"
-      ]
-    },
-    {
-      "name": "platon-cicd-skills",
-      "description": "Collection of CI/CD and DevOps skills including GitLab pipelines and Vault integration",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./platon-skills/gitlab/ci",
-        "./platon-skills/vault/basics",
-        "./platon-skills/vault/gitlab"
-      ]
-    },
-    {
-      "name": "sikt-design-system",
-      "description": "Sikt Design System skills including visual identity, design tokens, components, and Storybook URL generation",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./sikt-design-system/components/accordion",
-        "./sikt-design-system/components/advanced-inputs",
-        "./sikt-design-system/components/alert",
-        "./sikt-design-system/components/badge",
-        "./sikt-design-system/components/button",
-        "./sikt-design-system/components/dialog",
-        "./sikt-design-system/components/drawer",
-        "./sikt-design-system/components/form",
-        "./sikt-design-system/components/icons",
-        "./sikt-design-system/components/layout",
-        "./sikt-design-system/components/list",
-        "./sikt-design-system/components/navigation",
-        "./sikt-design-system/components/popover",
-        "./sikt-design-system/components/progress",
-        "./sikt-design-system/components/search-filter",
-        "./sikt-design-system/components/table",
-        "./sikt-design-system/general",
-        "./sikt-design-system/storybook"
-      ]
-    },
-    {
       "name": "skill-creator",
-      "description": "Guide for creating effective skills, providing workflows and best practices for skill development",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
       "source": "./",
       "strict": false,
       "skills": [
         "./skill-creator"
+      ]
+    },
+    {
+      "name": "template-skill",
+      "description": "Template skill for creating new skills. This is a starting point that demonstrates the structure and organization of a well-formed skill, including example resource directories for scripts, references, and assets.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./template-skill"
       ]
     }
   ]
