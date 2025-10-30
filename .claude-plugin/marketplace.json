@@ -26,6 +26,15 @@
       "skills": [
         "./template-skill"
       ]
+    },
+    {
+      "name": "finn-no-search",
+      "description": "This skill should be used when users need to search or query Finn.no, Norway's largest online marketplace. Use when users ask to find items for sale, search for jobs, browse real estate listings, look for cars, or query any category on Finn.no. Handles constructing search URLs and retrieving results since Finn.no has no public API.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./finn-no-search"
+      ]
     }
   ]
 }
