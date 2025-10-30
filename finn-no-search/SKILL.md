@@ -186,6 +186,61 @@ To search nationwide, omit the location parameter or use broader region codes.
 3. Use WebFetch to retrieve car listings
 4. Present cars with year, mileage, price, and links
 
+## Command-Line Search Script
+
+This skill includes a Node.js script for performing Finn.no searches directly from the command line. The script is located in [scripts/search.js](scripts/search.js).
+
+### Running the Script
+
+```bash
+# Basic syntax
+node scripts/search.js <category> [options]
+
+# Real estate search example (Byåsen, Trondheim under 10M NOK)
+node scripts/search.js realestate --query "Byåsen" --location trondheim --price-to 10000000
+
+# Job search example
+node scripts/search.js jobs --query "developer" --location oslo
+
+# Car search example
+node scripts/search.js cars --query "electric" --price-to 200000 --sort price_asc
+
+# General items search
+node scripts/search.js items --query "macbook" --location bergen --sort price_asc
+```
+
+### Script Options
+
+**Categories:**
+- `realestate` - Homes and apartments
+- `jobs` - Job listings
+- `cars` - Vehicles
+- `items` - General goods
+
+**Common Options:**
+- `--query <text>` - Search query text
+- `--location <city>` - City name (oslo, bergen, trondheim, etc.)
+- `--price-from <amount>` - Minimum price in NOK
+- `--price-to <amount>` - Maximum price in NOK
+- `--sort <option>` - Sort by: newest, price_asc, price_desc
+
+**Real Estate Options:**
+- `--area-from <m²>` - Minimum area in square meters
+- `--area-to <m²>` - Maximum area in square meters
+
+**Car Options:**
+- `--year-from <year>` - Minimum year
+- `--year-to <year>` - Maximum year
+- `--mileage-to <km>` - Maximum mileage
+
+### Script Output
+
+The script outputs:
+- Search URL used
+- Number of results found
+- Top 10 listings with titles, prices, and direct links
+- Parsed data that can be used programmatically
+
 ## Important Considerations
 
 ### Limitations
