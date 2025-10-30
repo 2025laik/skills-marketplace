@@ -53,6 +53,15 @@
       "skills": [
         "./lichess-player-lookup"
       ]
+    },
+    {
+      "name": "lilypond",
+      "description": "This skill enables sheet music engraving using Lilypond. Use this skill when compiling Lilypond (.ly) files to PDF or PNG formats, or when converting music notation from ABC notation or MusicXML to Lilypond format.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./lilypond"
+      ]
     }
   ]
 }
