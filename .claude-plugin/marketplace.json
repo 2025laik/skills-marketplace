@@ -44,6 +44,15 @@
       "skills": [
         "./greet-person-politely"
       ]
+    },
+    {
+      "name": "lichess-player-lookup",
+      "description": "This skill should be used when users need to look up Lichess.org chess player information, specifically their ratings in bullet, blitz, and rapid time controls. Use when users ask about a player's rating, profile, or performance on Lichess.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./lichess-player-lookup"
+      ]
     }
   ]
 }
