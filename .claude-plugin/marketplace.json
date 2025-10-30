@@ -62,6 +62,15 @@
       "skills": [
         "./lilypond"
       ]
+    },
+    {
+      "name": "dad-joke-generator",
+      "description": "This skill should be used when users request dad jokes, want to generate funny puns, need icebreaker jokes, or ask for clean family-friendly humor. It provides access to a large database of dad jokes through APIs and can fetch random jokes or search for jokes about specific topics.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./dad-joke-generator"
+      ]
     }
   ]
 }
